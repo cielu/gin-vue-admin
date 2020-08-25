@@ -18,6 +18,20 @@ mysql:
     max-idle-conns: 10
     max-open-conns: 10
     log-mode: false
+    sources: # 主服务器
+        - username: root
+          password: 'Aa@6447985'
+          path: '127.0.0.1:3306'
+          db-name: 'qmPlus'
+    replicas: # 从服务器
+        - username: root
+          password: 'Aa@6447985'
+          path: '127.0.0.1:3306'
+          db-name: 'qmPlus'
+#        - username: root
+#          password: 'Aa@6447985'
+#          path: '127.0.0.1:3306'
+#          db-name: 'qmPlus'
 
 #sqlite 配置
 sqlite:

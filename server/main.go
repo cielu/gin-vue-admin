@@ -24,8 +24,10 @@ func main() {
 		initialize.Mysql()
 	}
 	initialize.DBTables()
+	//initialize.Data() // 打开注释即可初始化数据
 	// 程序结束前关闭数据库链接
-	defer global.GVA_DB.Close()
+	db, _ := global.GVA_DB.DB()
+	defer db.Close()
 
 	core.RunWindowsServer()
 }

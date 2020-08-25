@@ -1,15 +1,15 @@
 package config
 
 type Server struct {
-	Mysql     Mysql     `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-	Sqlite    Sqlite    `mapstructure:"sqlite" json:"sqlite" yaml:"sqlite"`
-	Qiniu     Qiniu     `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
-	Casbin    Casbin    `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
-	Redis     Redis     `mapstructure:"redis" json:"redis" yaml:"redis"`
-	System    System    `mapstructure:"system" json:"system" yaml:"system"`
-	JWT       JWT       `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
-	Captcha   Captcha   `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	Log       Log       `mapstructure:"log" json:"log" yaml:"log"`
+	Mysql   Mysql   `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
+	Sqlite  Sqlite  `mapstructure:"sqlite" json:"sqlite" yaml:"sqlite"`
+	Qiniu   Qiniu   `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
+	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
+	Redis   Redis   `mapstructure:"redis" json:"redis" yaml:"redis"`
+	System  System  `mapstructure:"system" json:"system" yaml:"system"`
+	JWT     JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
+	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
+	Log     Log     `mapstructure:"log" json:"log" yaml:"log"`
 }
 
 type System struct {
@@ -28,14 +28,23 @@ type Casbin struct {
 }
 
 type Mysql struct {
-	Username     string `mapstructure:"username" json:"username" yaml:"username"`
-	Password     string `mapstructure:"password" json:"password" yaml:"password"`
-	Path         string `mapstructure:"path" json:"path" yaml:"path"`
-	Dbname       string `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
-	Config       string `mapstructure:"config" json:"config" yaml:"config"`
-	MaxIdleConns int    `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
-	MaxOpenConns int    `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
-	LogMode      bool   `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`
+	Username     string          `mapstructure:"username" json:"username" yaml:"username"`
+	Password     string          `mapstructure:"password" json:"password" yaml:"password"`
+	Path         string          `mapstructure:"path" json:"path" yaml:"path"`
+	Dbname       string          `mapstructure:"db-name" json:"dbname" yaml:"db-name"`
+	Config       string          `mapstructure:"config" json:"config" yaml:"config"`
+	MaxIdleConns int             `mapstructure:"max-idle-conns" json:"maxIdleConns" yaml:"max-idle-conns"`
+	MaxOpenConns int             `mapstructure:"max-open-conns" json:"maxOpenConns" yaml:"max-open-conns"`
+	LogMode      bool            `mapstructure:"log-mode" json:"logMode" yaml:"log-mode"`
+	Sources      []MysqlServices `mapstructure:"sources" json:"sources" yaml:"sources"`
+	Replicas     []MysqlServices `mapstructure:"replicas" json:"replicas" yaml:"replicas"`
+}
+
+type MysqlServices struct {
+	Username string `mapstructure:"username" json:"username" yaml:"username"`
+	Password string `mapstructure:"password" json:"password" yaml:"password"`
+	Path     string `mapstructure:"path" json:"path" yaml:"path"`
+	DbName   string `mapstructure:"db-name" json:"dbName" yaml:"db-name"`
 }
 
 type Redis struct {
